@@ -90,6 +90,10 @@ namespace True_Weather
             }
             else
             {
+
+                //resetting the boxes to empty string;
+                location.Text = "";
+                condition.Text = "";
                errorBox.Foreground = Brushes.Red;
                 errorBox.Text ="Not a valid ZIP code";
             }
@@ -175,10 +179,15 @@ namespace True_Weather
             string region = channel.SelectSingleNode("yweather:location", man).Attributes["region"].Value;
             string country = channel.SelectSingleNode("yweather:location", man).Attributes["country"].Value;
 
+            errorBox.Text = "";
             location.Text = String.Format("City: {0} Region: {1} Country: {2}", city, region, country);
 
-            string temperature = channel.SelectSingleNode("yweather:units", man).Attributes["temperature"].Value;
-            Console.WriteLine(temperature);
+            XmlNode item = wData.SelectSingleNode("rss").SelectSingleNode("channel").SelectSingleNode("item");
+            
+            string climate = item.SelectSingleNode("yweather:condition", man).Attributes["text"].Value;
+            string temperature = item.SelectSingleNode("yweather:condition", man).Attributes["temp"].Value;
+
+            condition.Text = String.Format("{0} {1} F", climate, temperature);
 
             
             
