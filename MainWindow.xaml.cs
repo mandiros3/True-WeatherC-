@@ -70,6 +70,7 @@ namespace True_Weather
 
             //TODO: implement cases for zip, address or city name
 
+           
             string textZip = zipQuery.Text.Trim();
 
 
@@ -89,8 +90,8 @@ namespace True_Weather
             }
             else
             {
-                resultBox.Foreground = Brushes.Red;
-                resultBox.Text ="Not a valid ZIP code";
+               errorBox.Foreground = Brushes.Red;
+                errorBox.Text ="Not a valid ZIP code";
             }
 
 
@@ -99,9 +100,6 @@ namespace True_Weather
 
 
         }
-
-
-
 
 
 
@@ -139,6 +137,7 @@ namespace True_Weather
         private void GetWeather(string woeid)
         {
             //grabbing weather data, raw
+            
             string query = String.Format("http://weather.yahooapis.com/forecastrss?w={0}", woeid );
             XmlDocument wData = new XmlDocument();
             wData.Load(query);
@@ -170,20 +169,22 @@ namespace True_Weather
             // for this one, same thing, expect that you need to pass two arguments, prefix and namespace manager. 
 
 
+
+            // Location box being filled, I need to find a less repetivive way to implement this section. 
             string city = channel.SelectSingleNode("yweather:location", man).Attributes["city"].Value;
-            Console.WriteLine(city);
-
             string region = channel.SelectSingleNode("yweather:location", man).Attributes["region"].Value;
-            Console.WriteLine(region);
-
             string country = channel.SelectSingleNode("yweather:location", man).Attributes["country"].Value;
-            Console.WriteLine(country);
+
+            location.Text = String.Format("City: {0} Region: {1} Country: {2}", city, region, country);
 
             string temperature = channel.SelectSingleNode("yweather:units", man).Attributes["temperature"].Value;
             Console.WriteLine(temperature);
 
+            
+            
+            
             string cdata = channel.SelectSingleNode("item").SelectSingleNode("description").InnerText;
-            resultBox.Text = cdata;
+           // resultBox.Text = cdata;
                 
            
 
