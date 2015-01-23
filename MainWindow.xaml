@@ -19,6 +19,5 @@
         <TextBlock x:Name="location" HorizontalAlignment="Left" Margin="10,25,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" Height="38" FontSize="20"/>
         <TextBlock x:Name="errorBox" HorizontalAlignment="Left" Height="52" Margin="10,2,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" FontSize="36"/>
         <TextBlock x:Name="condition" HorizontalAlignment="Left" Margin="10,68,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Width="396" Height="29"/>
-        <ToolBar HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Grid>
 </Window>
