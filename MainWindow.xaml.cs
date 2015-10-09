@@ -121,8 +121,8 @@ namespace True_Weather
         private string GetWOEID(string zipQuery)
         {
 
-
-            string apiID = "dj0yJmk9Q3lYem5NdHg5Z2NXJmQ9WVdrOWVFSjFOMHhTTkRJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD04Mg--";
+// INsert your yahoo api key here
+            string apiID = "";
 
             string query = String.Format("http://where.yahooapis.com/v1/places.q('{0}')?appid={1}", zipQuery, apiID);
 
